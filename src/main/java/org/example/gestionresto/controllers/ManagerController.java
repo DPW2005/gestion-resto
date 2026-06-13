@@ -149,6 +149,7 @@ public class ManagerController {
     /**
      * Vide simplement le contenu de tous les TextFields.
      */
+    @FXML
     private void clearFields() {
         nameField.clear();
         descField.clear();
