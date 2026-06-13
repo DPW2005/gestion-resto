@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionresto.controllers.ClientController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <top>
+        <HBox spacing="15.0" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+            <padding><Insets bottom="20.0" /></padding>
+            <Label text="Votre Table :" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+            <ComboBox fx:id="tableComboBox" prefWidth="150" promptText="Choisir une table..."/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="10.0">
+            <Label text="Menu Disponible" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <ListView fx:id="menuListView" VBox.vgrow="ALWAYS" />
+            <Button text="Ajouter à la commande" onAction="#handleAddToCart" maxWidth="Infinity" />
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="10.0" style="-fx-padding: 0 0 0 20;">
+            <Label text="Votre Commande" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <ListView fx:id="cartListView" prefWidth="250" VBox.vgrow="ALWAYS" />
+            
+            <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                <Label text="Total :" style="-fx-font-weight: bold;"/>
+                <Label fx:id="totalLabel" text="0.00 €" style="-fx-font-weight: bold; -fx-text-fill: green;"/>
+            </HBox>
+            
+            <Button fx:id="placeOrderButton" text="Passer la commande" onAction="#handlePlaceOrder" maxWidth="Infinity" style="-fx-base: #28a745; -fx-text-fill: white;" />
+            <Button fx:id="payButton" text="Payer la facture" onAction="#handlePayment" maxWidth="Infinity" disable="true" style="-fx-base: #007bff; -fx-text-fill: white;" />
+        </VBox>
+    </right>
+</BorderPane>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionresto.controllers.ManagerController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <top>
+        <Label text="Espace Gérant - Gestion des Menus et Stocks" style="-fx-font-weight: bold; -fx-font-size: 18px;">
+            <padding><Insets bottom="15.0"/></padding>
+        </Label>
+    </top>
+
+    <center>
+        <TableView fx:id="menuTable" onMouseClicked="#handleTableClick" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50">
+                    <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colName" text="Nom" prefWidth="150">
+                    <cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colDesc" text="Description" prefWidth="200">
+                    <cellValueFactory><PropertyValueFactory property="description" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colPrice" text="Prix (€)" prefWidth="80">
+                    <cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colStock" text="Stock" prefWidth="80">
+                    <cellValueFactory><PropertyValueFactory property="availableStock" /></cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+
+    <bottom>
+        <VBox spacing="10.0">
+            <padding><Insets top="15.0"/></padding>
+            <HBox spacing="10.0">
+                <TextField fx:id="nameField" promptText="Nom de l'article" prefWidth="150"/>
+                <TextField fx:id="descField" promptText="Description" prefWidth="200"/>
+                <TextField fx:id="priceField" promptText="Prix" prefWidth="80"/>
+                <TextField fx:id="stockField" promptText="Stock" prefWidth="80"/>
+            </HBox>
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <Button text="Ajouter" onAction="#handleAdd" style="-fx-base: #28a745; -fx-text-fill: white;"/>
+                <Button text="Modifier" onAction="#handleUpdate" style="-fx-base: #ffc107;"/>
+                <Button text="Supprimer" onAction="#handleDelete" style="-fx-base: #dc3545; -fx-text-fill: white;"/>
+                <Button text="Vider les champs" onAction="#clearFields" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

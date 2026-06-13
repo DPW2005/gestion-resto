@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestionresto.controllers.StaffController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <top>
+        <Label text="Gestion des Commandes - Personnel" style="-fx-font-weight: bold; -fx-font-size: 18px;">
+            <padding><Insets bottom="15.0"/></padding>
+        </Label>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.7">
+            <TableView fx:id="ordersTable" onMouseClicked="#handleTableClick" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50">
+                        <cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colTable" text="Table" prefWidth="80">
+                        <cellValueFactory><PropertyValueFactory property="tableId" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colAmount" text="Total" prefWidth="80">
+                        <cellValueFactory><PropertyValueFactory property="totalAmount" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colStatus" text="Statut" prefWidth="100">
+                        <cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colDate" text="Date/Heure" prefWidth="150">
+                        <cellValueFactory><PropertyValueFactory property="createdAt" /></cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <VBox spacing="10.0" style="-fx-padding: 0 0 0 10;">
+                <Label text="Détails de la commande :" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="orderDetailsListView" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <padding><Insets top="15.0"/></padding>
+            <Button text="Rafraîchir" onAction="#handleRefresh" />
+            <Button text="Passer en CUISSON" onAction="#handleStatusCooking" style="-fx-base: #ffc107;"/>
+            <Button text="Marquer SERVI" onAction="#handleStatusServed" style="-fx-base: #17a2b8;"/>
+            <Button text="Générer Facture" onAction="#handleGenerateInvoice" style="-fx-base: #6c757d; -fx-text-fill: white;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
